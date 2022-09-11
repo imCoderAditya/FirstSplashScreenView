@@ -34,7 +34,7 @@ This is a Splash Screen Package
 
 
 ## (Optional)  Implements
-This activity in change 'android\app\src\main\res\values\styles.xml'
+Add this line given path 'android\app\src\main\res\values\styles.xml'
 ```xml
   <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <!-- Show a splash screen on the activity. Automatically removed when
