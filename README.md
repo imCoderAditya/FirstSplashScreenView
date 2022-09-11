@@ -48,7 +48,6 @@ This activity in change 'android\app\src\main\res\values\styles.xml'
 ```
 
 
-
 ```dart
 SplashScreen(
         child: Padding(
@@ -75,3 +74,11 @@ SplashScreen(
       ),
 ```
 
+
+   <div> 
+    <img src="https://raw.githubusercontent.com/imCoderAditya/SplashScreenView/master/screenshot/1.jpg"alt="loading..." width="414" height="896">
+    <img src="https://raw.githubusercontent.com/imCoderAditya/SplashScreenView/master/screenshot/2.jpg"alt="loading..." width="414" height="896"> 
+    <img src="https://raw.githubusercontent.com/imCoderAditya/SplashScreenView/master/screenshot/3.jpg"alt="loading..." width="414" height="896">
+    <img src="https://raw.githubusercontent.com/imCoderAditya/SplashScreenView/master/screenshot/4.jpg"alt="loading..." width="414" height="896">
+    <img src="https://raw.githubusercontent.com/imCoderAditya/SplashScreenView/master/screenshot/5.jpg"alt="loading..." width="414" height="896">
+   </div>
