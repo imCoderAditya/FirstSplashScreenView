@@ -29,25 +29,7 @@ This is a Splash Screen Package
       this.text})
 ```
 
-
-
-
-
-## (Optional)  Implements
-Add this line given path 'android\app\src\main\res\values\styles.xml'
-```xml
-  <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
-        <!-- Show a splash screen on the activity. Automatically removed when
-             the Flutter engine draws its first frame -->
-        <item name="android:windowBackground">@drawable/launch_background</item>
-        <item name="android:colorBackground">#ff1100</item>
-        <item name="android:statusBarColor">#ff1100</item>
-
-    </style>
-
-```
-
-
+# Using Code 
 ```dart
 SplashScreen(
         child: Padding(
@@ -75,6 +57,23 @@ SplashScreen(
 ```
 
 
+
+
+
+## (Optional) Using Code
+Add this line given path 'android\app\src\main\res\values\styles.xml'
+```xml
+  <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <!-- Show a splash screen on the activity. Automatically removed when
+             the Flutter engine draws its first frame -->
+        <item name="android:windowBackground">@drawable/launch_background</item>
+        <item name="android:colorBackground">#ff1100</item>
+        <item name="android:statusBarColor">#ff1100</item>
+
+    </style>
+
+```
+# ScreenShot
    <div> 
     <img src="https://raw.githubusercontent.com/imCoderAditya/SplashScreenView/master/screenshot/1.jpg"alt="loading..." width="414" height="896">
     <img src="https://raw.githubusercontent.com/imCoderAditya/SplashScreenView/master/screenshot/2.jpg"alt="loading..." width="414" height="896"> 
