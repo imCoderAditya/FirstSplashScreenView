@@ -1,7 +1,7 @@
-name: splashscreenview
+name: firstsplashscreenview
 description: This is a SplashScreenView Package
 version: 0.0.1
-homepage: https://github.com/imCoderAditya/SplashScreenView.git
+homepage: https://github.com/imCoderAditya/firstsplashscreenview.git
 
 environment:
   sdk: '>=2.18.0 <3.0.0'
