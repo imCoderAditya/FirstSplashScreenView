@@ -15,18 +15,18 @@ This is a Splash Screen Package
 
 ## Features
 ```dart
-  SplashScreen(
-      {super.key,
-      this.duration,
-      this.child,
-      this.navigator,
-      this.circleAvatar,
-      this.colors,
-      this.appBar,
-      required this.nextPage,
-      this.icon,
-      this.timer,
-      this.text})
+SplashScreen({
+    super.key,
+    this.duration = const Duration(seconds: 5),
+    this.child,
+    this.colors = Colors.red,
+    this.gradient,
+    this.appBar,
+    required this.nextPage,
+    this.icon,
+    this.timer,
+    this.text,
+  }) 
 ```
 
 # Using Code 
