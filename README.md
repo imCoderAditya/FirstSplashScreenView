@@ -60,7 +60,7 @@ SplashScreen(
 
 
 
-## (Optional) Using Code
+## (Optional) Using Code .
 Add this line given path 'android\app\src\main\res\values\styles.xml'
 ```xml
   <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
