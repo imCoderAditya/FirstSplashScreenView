@@ -60,12 +60,8 @@ SplashScreen(
 
 
 
-<<<<<<< HEAD
 ## (Optional) Using Code .
-=======
-## (Optional) Using Code
->>>>>>> 179426338445f0acba9a5b969b01d54d28adc103
-Add this line given path 'android\app\src\main\res\values\styles.xml'
+Add this line given path  'android\app\src\main\res\values\styles.xml'
 ```xml
   <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <!-- Show a splash screen on the activity. Automatically removed when
@@ -73,7 +69,6 @@ Add this line given path 'android\app\src\main\res\values\styles.xml'
         <item name="android:windowBackground">@drawable/launch_background</item>
         <item name="android:colorBackground">#ff1100</item>
         <item name="android:statusBarColor">#ff1100</item>
-
     </style>
 
 ```
