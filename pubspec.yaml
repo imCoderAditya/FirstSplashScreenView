@@ -1,6 +1,10 @@
 name: firstsplashscreenview
 description: This is a SplashScreenView Package
+<<<<<<< HEAD
 version: 0.0.6
+=======
+version: 0.0.1
+>>>>>>> 179426338445f0acba9a5b969b01d54d28adc103
 homepage: https://github.com/imCoderAditya/FirstSplashScreenView.git
 
 environment:
