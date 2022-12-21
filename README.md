@@ -75,7 +75,7 @@ Add this line given path 'android\app\src\main\res\values\styles.xml'
 ```
 # ScreenShot
    <div> 
-    <img src="https://raw.githubusercontent.com/imCoderAditya/SplashScreenView/master/screenshot/1.jpg"alt="loading..." width="414" height="896">
+    <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/1.jpg"alt="loading..." width="414" height="896">
     <img src="https://raw.githubusercontent.com/imCoderAditya/SplashScreenView/master/screenshot/2.jpg"alt="loading..." width="414" height="896"> 
     <img src="https://raw.githubusercontent.com/imCoderAditya/SplashScreenView/master/screenshot/3.jpg"alt="loading..." width="414" height="896">
     <img src="https://raw.githubusercontent.com/imCoderAditya/SplashScreenView/master/screenshot/4.jpg"alt="loading..." width="414" height="896">
