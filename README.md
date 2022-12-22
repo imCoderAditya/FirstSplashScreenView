@@ -18,59 +18,94 @@ This is a Splash Screen Package
 SplashScreen({
     super.key,
     this.duration = const Duration(seconds: 5),
-    this.child,
-    this.colors = Colors.red,
-    this.gradient,
-    this.appBar,
     required this.nextPage,
-    this.icon,
+    this.circleHeight = 0,
+    this.iconBackgroundColor,
+    this.backgroundColor,
     this.timer,
+    this.child,
     this.text,
-  }) 
+  });
+
+```
+## SplashScreen with Gradient
+```dart
+  SplashScreen.gradient({
+    super.key,
+    this.duration = const Duration(seconds: 5),
+    this.gradient,
+    required this.nextPage,
+    this.circleHeight = 0,
+    this.iconBackgroundColor,
+    this.timer,
+    this.child,
+    this.text,
+  });
 ```
 
 # Using Code 
 ```dart
 SplashScreen(
-        child: Padding(
-          padding: EdgeInsets.only(top: 20.0),
-          child: Text(
-            "ImCoderAditya",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-            ),
+        backgroundColor: Colors.purple,
+        duration: const Duration(minutes: 1),
+        nextPage: const WelcomePage(),
+        iconBackgroundColor: Colors.white,
+        circleHeight: 60,
+        child: Icon(
+          Icons.ac_unit_outlined,
+          size: 50,
+        ),
+        text: const Text(
+          "ImCoderAditya",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
           ),
         ),
-        colors: Colors.red,
-        circleAvatar: const CircleAvatar(
-          radius: 40,
-          backgroundColor: Colors.white,
-          child: Icon(
-            Icons.ac_unit_outlined,
-            color: Colors.blue,
+    ),
+```
+
+# Using Code 
+```dart
+ SplashScreen.gradient(
+      gradient: const LinearGradient(
+          begin: Alignment.topCenter,
+          colors: [
+            Colors.red,
+            Colors.pink,
+            Colors.purpleAccent,
+          ],
+        ),
+        duration: const Duration(minutes: 1),
+        nextPage: const WelcomePage(),
+        iconBackgroundColor: Colors.white,
+        circleHeight: 60,
+        child: Icon(
+          Icons.code,
+          size: 50,
+        ),
+        text: const Text(
+          "ImCoderAditya",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
           ),
         ),
-        nextPage: HomePage(),
-        duration: Duration(seconds: 20),
       ),
 ```
 
 
-
-
-
 ## (Optional) Using Code .
-Add this line given path  'android\app\src\main\res\values\styles.xml'
-```xml
-  <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
-        <!-- Show a splash screen on the activity. Automatically removed when
-             the Flutter engine draws its first frame -->
-        <item name="android:windowBackground">@drawable/launch_background</item>
-        <item name="android:colorBackground">#ff1100</item>
-        <item name="android:statusBarColor">#ff1100</item>
-    </style>
 
+```dart
+SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+    ),
+  );
 ```
 # ScreenShot
    <div> 
