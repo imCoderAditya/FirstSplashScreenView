@@ -1,7 +1,24 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 
+import 'src/widgets/first_splash_screen_view.dart';
+
+export 'src/animations/logo_animations.dart';
+export 'src/animations/text_animations.dart';
+export 'src/backgrounds/animated_backgrounds.dart';
+export 'src/backgrounds/liquid_glass_bg.dart';
+export 'src/controllers/splash_controller.dart';
+export 'src/indicators/loading_indicators.dart';
+export 'src/models/branding_kit.dart';
+export 'src/models/splash_preset.dart';
+export 'src/models/splash_template.dart';
+export 'src/models/startup_checks.dart';
+export 'src/particles/particle_engine.dart';
+export 'src/presets/preset_definitions.dart';
+export 'src/templates/template_definitions.dart';
+export 'src/widgets/first_splash_screen_view.dart';
+
+/// Legacy splash screen widget kept for 100% backward compatibility.
 // ignore: must_be_immutable
 class SplashScreen extends StatefulWidget {
   Widget? child;
@@ -44,51 +61,16 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-  void initState() {
-    super.initState();
-    Timer(widget.duration!, () {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => widget.nextPage!,
-        ),
-      );
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Stack(
-      children: [
-        Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            gradient: widget.gradient,
-            color: widget.backgroundColor,
-          ),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: widget.circleHeight,
-                  width: widget.circleHeight,
-                  decoration: BoxDecoration(
-                    color: widget.iconBackgroundColor,
-                    borderRadius:
-                        BorderRadius.circular(widget.circleHeight! / 2),
-                  ),
-                  child: widget.child,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                widget.text!,
-              ],
-            ),
-          ),
-        ),
-      ],
-    ));
+    return FirstSplashScreenView(
+      duration: widget.duration ?? const Duration(seconds: 5),
+      nextPage: widget.nextPage,
+      backgroundColor: widget.backgroundColor,
+      gradient: widget.gradient,
+      circleHeight: widget.circleHeight ?? 0,
+      iconBackgroundColor: widget.iconBackgroundColor,
+      text: widget.text,
+      child: widget.child,
+    );
   }
 }

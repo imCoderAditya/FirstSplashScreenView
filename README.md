@@ -1,117 +1,228 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# FirstSplashScreenView 🚀
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+The **#1 modern, flagship Splash Screen package for Flutter**.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+`FirstSplashScreenView` provides premium, production-ready, liquid-glass, animated, and particle-powered splash screens with one line of code, while maintaining **100% backward compatibility** for existing projects.
 
-This is a Splash Screen Package 
+[![pub package](https://img.shields.io/pub/v/firstsplashscreenview.svg)](https://pub.dev/packages/firstsplashscreenview)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Flutter Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS%20%7C%20Web%20%7C%20macOS%20%7C%20Windows%20%7C%20Linux-blue)](https://flutter.dev)
 
-## Features
-```dart
-SplashScreen({
-    super.key,
-    this.duration = const Duration(seconds: 5),
-    required this.nextPage,
-    this.circleHeight = 0,
-    this.iconBackgroundColor,
-    this.backgroundColor,
-    this.timer,
-    this.child,
-    this.text,
-  });
+---
 
+## 📱 Screenshots & Presets Gallery
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_100_templates.png" alt="100+ Templates Explorer" width="220" />
+  &nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_splash.png" alt="Liquid Glass" width="220" />
+  &nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_cyberpunk.png" alt="Cyberpunk & Neon" width="220" />
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_ai.png" alt="AI & Space Engine" width="220" />
+  &nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_material3.png" alt="Material 3 / You" width="220" />
+  &nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_gaming.png" alt="Gaming Engine" width="220" />
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_luxury.png" alt="Luxury Gold" width="220" />
+  &nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_apple.png" alt="Apple Minimal" width="220" />
+  &nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_minimal.png" alt="Minimal Clean" width="220" />
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_showcase.png" alt="Showcase Home Screen" width="240" />
+</div>
+
+---
+
+## 🌟 Features Overview
+
+- **⚡ One-Line Setup**: Instant splash screens using `SplashPreset.apple`, `SplashPreset.liquidGlass`, `SplashPreset.cyberpunk`, `SplashPreset.material3`, etc.
+- **💎 100+ Premium Templates**: Pre-configured domain templates for Tech, Finance, Crypto, AI, Healthcare, Gaming, Luxury, E-Commerce, Food, Travel, etc.
+- **🧊 Liquid Glass (iOS 26 Style)**: Frosted glassmorphism, dynamic ambient reflections, and glow borders.
+- **✨ Particle Engine**: GPU-accelerated particle canvas (Fireflies, Stars, Rain, Snow, Sparkles, Bubbles, Leaves).
+- **🔄 Advanced Animations**: Logo animations (Scale, Fade, Bounce, Flip, 3D Rotation, Pulse, Floating, Slide) & Text animations (Typewriter, Slide, Fade, Scale).
+- **⏳ Async Startup Checks**: Seamlessly execute Firebase, Hive, SharedPreferences, or API tasks during splash screen.
+- **🏷️ App Branding Kit**: Display App Name, Tagline, Logo, Version, Build Number, and Copyright metadata automatically.
+- **🎨 Pluggable Media Builders**: Builders for custom Lottie, Rive, Video, or Custom widgets without forcing heavy core dependencies.
+- **🛡️ 100% Backward Compatible**: Legacy `SplashScreen()` and `SplashScreen.gradient()` constructors remain fully supported.
+- **🌐 6 Platform Support**: Android, iOS, Web, macOS, Windows, and Linux.
+
+---
+
+## 📦 Installation
+
+Add `firstsplashscreenview` to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  firstsplashscreenview: ^1.0.0
 ```
-## SplashScreen with Gradient
+
+---
+
+## 🚀 Usage Guide
+
+### 1. One-Line Preset Usage (Recommended)
+
 ```dart
-  SplashScreen.gradient({
-    super.key,
-    this.duration = const Duration(seconds: 5),
-    this.gradient,
-    required this.nextPage,
-    this.circleHeight = 0,
-    this.iconBackgroundColor,
-    this.timer,
-    this.child,
-    this.text,
-  });
+import 'package:firstsplashscreenview/firstsplashscreenview.dart';
+import 'package:flutter/material.dart';
+
+FirstSplashScreenView(
+  preset: SplashPreset.liquidGlass,
+  duration: const Duration(seconds: 3),
+  nextPage: const HomePage(),
+  titleText: 'My App',
+  child: const Icon(Icons.flash_on, size: 50, color: Colors.white),
+);
 ```
 
-# Using Code 
+### 2. 100+ Templates Usage
+
+```dart
+FirstSplashScreenView(
+  template: SplashTemplate.cyberpunk, // Select from 100+ templates
+  duration: const Duration(seconds: 3),
+  nextPage: const HomePage(),
+  titleText: 'Cyberpunk App',
+  child: const Icon(Icons.memory, size: 50, color: Colors.pinkAccent),
+);
+```
+
+### 3. Liquid Glass (iOS 26 Style)
+
+```dart
+FirstSplashScreenView(
+  preset: SplashPreset.liquidGlass,
+  duration: const Duration(seconds: 4),
+  nextPage: const HomePage(),
+  titleText: 'Liquid Glass Demo',
+  child: const Icon(Icons.water_drop, size: 50, color: Colors.white),
+);
+```
+
+### 4. GPU Particle Engine (Stars, Fireflies, Rain, Snow)
+
+```dart
+FirstSplashScreenView(
+  preset: SplashPreset.ai,
+  particleType: ParticleType.stars, // ParticleType.fireflies, ParticleType.rain, ParticleType.snow, ParticleType.sparkles
+  duration: const Duration(seconds: 3),
+  nextPage: const HomePage(),
+  titleText: 'AI Engine',
+  child: const Icon(Icons.auto_awesome, size: 50, color: Colors.tealAccent),
+);
+```
+
+### 5. Async Startup Initialization & Branding Kit
+
+```dart
+FirstSplashScreenView(
+  preset: SplashPreset.apple,
+  duration: const Duration(seconds: 4),
+  nextPage: const HomePage(),
+  brandingKit: const BrandingKit(
+    appName: 'Acme Enterprise',
+    tagline: 'Empowering Modern Workflows',
+    version: '1.0.0',
+    copyright: '© 2026 Acme Corp',
+  ),
+  startupChecks: StartupChecks(
+    initializeTask: () async {
+      // Async initialization (Firebase, Hive, SecureStorage, APIs)
+      await Future.delayed(const Duration(seconds: 2));
+    },
+    timeout: const Duration(seconds: 10),
+  ),
+  child: const Icon(Icons.business, size: 50, color: Colors.white),
+);
+```
+
+### 6. Legacy Backward-Compatible Usage
+
+Existing code using `SplashScreen` or `SplashScreen.gradient` works out of the box:
+
 ```dart
 SplashScreen(
-        backgroundColor: Colors.purple,
-        duration: const Duration(minutes: 1),
-        nextPage: const WelcomePage(),
-        iconBackgroundColor: Colors.white,
-        circleHeight: 60,
-        child: Icon(
-          Icons.ac_unit_outlined,
-          size: 50,
-        ),
-        text: const Text(
-          "ImCoderAditya",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-    ),
+  backgroundColor: Colors.purple,
+  duration: const Duration(seconds: 3),
+  nextPage: const WelcomePage(),
+  circleHeight: 60,
+  iconBackgroundColor: Colors.white,
+  child: const Icon(Icons.ac_unit_outlined, size: 50),
+  text: const Text('Legacy Splash Screen'),
+);
 ```
 
-# Using Code 
-```dart
- SplashScreen.gradient(
-      gradient: const LinearGradient(
-          begin: Alignment.topCenter,
-          colors: [
-            Colors.red,
-            Colors.pink,
-            Colors.purpleAccent,
-          ],
-        ),
-        duration: const Duration(minutes: 1),
-        nextPage: const WelcomePage(),
-        iconBackgroundColor: Colors.white,
-        circleHeight: 60,
-        child: Icon(
-          Icons.code,
-          size: 50,
-        ),
-        text: const Text(
-          "ImCoderAditya",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-```
+---
 
+## 🎨 100+ Templates Reference List
 
-## (Optional) Using Code .
+### Tech & Corporate
+`apple`, `material3`, `materialYou`, `glass`, `liquidGlass`, `corporate`, `ai`, `space`, `startup`, `saas`, `cloud`, `developer`, `quantum`, `security`
 
-```dart
-SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark,
-    ),
-  );
-```
-# ScreenShot
-   <div> 
-    <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/1.jpg"alt="loading..." width="414" height="896">
-    <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/2.jpg"alt="loading..." width="414" height="896"> 
-    <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/3.jpg"alt="loading..." width="414" height="896">
-    <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/4.jpg"alt="loading..." width="414" height="896">
-    <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/5.jpg"alt="loading..." width="414" height="896">
-   </div>
+### Industry & Business
+`finance`, `crypto`, `realEstate`, `education`, `healthcare`, `medical`, `eCommerce`, `fashion`, `automotive`, `logistics`
+
+### Lifestyle & Media
+`social`, `food`, `travel`, `gaming`, `arcade`, `music`, `podcast`, `news`, `photography`, `fitness`, `event`
+
+### Aesthetics & Art
+`luxury`, `gold`, `diamond`, `platinum`, `neon`, `gradient`, `cyberpunk`, `minimal`, `elegant`, `dark`, `light`, `vintage`, `retro`, `hologram`, `aurora`, `sunrise`, `midnight`, `sunset`, `cosmic`, `ocean`, `forest`, `nature`, `fire`, `volcano`, `metallic`
+
+### Motion & Dynamics
+`animated`, `wave`, `blob`, `ripple`, `particle`, `glow`, `shimmer`, `typewriter`, `flip`, `rotation3d`, `bounce`, `morph`, `zoom`, `hero`, `liquid`, `mesh`, `shader`
+
+### Media & Interactive
+`video`, `lottie`, `rive`, `interactive`, `countdown`, `multiSequence`, `adaptive`
+
+### Effects & Particles
+`fireflies`, `snow`, `rain`, `sparkles`, `bubbles`, `stars`, `leaves`, `magic`, `atom`, `orbit`, `infinity`, `dna`, `dots`, `bars`, `pulseWave`, `shimmerText`, `rollingText`, `glowText`, `glassmorphicOverlay`, `dynamicMonet`, `gradientWave`, `futuristicHUD`
+
+---
+
+## ⚙️ Parameter Reference
+
+| Parameter | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `preset` | `SplashPreset?` | `SplashPreset.modern` | Primary built-in preset theme |
+| `template` | `SplashTemplate?` | `null` | Pre-configured template from 100+ templates |
+| `duration` | `Duration` | `Duration(seconds: 3)` | Splash display duration |
+| `nextPage` | `Widget?` | `null` | Target widget to navigate after completion |
+| `child` | `Widget?` | `null` | Center logo/icon widget |
+| `text` | `Text?` | `null` | Custom title text widget |
+| `titleText` | `String?` | `null` | Title text string |
+| `textStyle` | `TextStyle?` | `null` | TextStyle for titleText |
+| `gradient` | `Gradient?` | `null` | Background gradient |
+| `backgroundColor` | `Color?` | `null` | Solid background color |
+| `colors` | `List<Color>?` | `null` | Dynamic color palette |
+| `circleHeight` | `double` | `90.0` | Size of logo background circle |
+| `iconBackgroundColor` | `Color?` | `null` | Background color for logo circle |
+| `brandingKit` | `BrandingKit?` | `null` | App metadata (AppName, Tagline, Version, Copyright) |
+| `startupChecks` | `StartupChecks?` | `null` | Async initialization tasks configuration |
+| `particleType` | `ParticleType?` | `null` | GPU particle effect |
+| `indicatorType` | `LoadingIndicatorType?` | `LoadingIndicatorType.circular` | Loading indicator style |
+| `logoAnimationType` | `LogoAnimationType?` | `LogoAnimationType.scale` | Logo animation effect |
+| `textAnimationType` | `TextAnimationType?` | `TextAnimationType.fade` | Text animation effect |
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for details.
