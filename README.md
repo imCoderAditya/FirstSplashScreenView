@@ -15,29 +15,29 @@ The **#1 modern, flagship Splash Screen package for Flutter**.
 <div align="center">
   <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_100_templates.png" alt="100+ Templates Explorer" width="230" />
   &nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_splash.png" alt="Liquid Glass" width="230" />
+  <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_rain.png" alt="Rain & Monsoon Particle Splash" width="230" />
   &nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_cyberpunk.png" alt="Cyberpunk & Neon" width="230" />
+  <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_gold.png" alt="Gold Engine" width="230" />
 </div>
 
 <br/>
 
 <div align="center">
+  <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_cyberpunk.png" alt="Cyberpunk & Neon" width="230" />
+  &nbsp;&nbsp;
   <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_material3.png" alt="Material 3 / You" width="230" />
   &nbsp;&nbsp;
   <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_gaming.png" alt="Gaming Engine" width="230" />
-  &nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_minimal.png" alt="Minimal Clean" width="230" />
 </div>
 
 <br/>
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_rain.png" alt="Rain & Monsoon Particle Splash" width="230" />
-  &nbsp;&nbsp;
   <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_luxury.png" alt="Luxury Gold" width="230" />
   &nbsp;&nbsp;
   <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_apple.png" alt="Apple Minimal" width="230" />
+  &nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/imCoderAditya/FirstSplashScreenView/master/screenshot/ios_minimal.png" alt="Minimal Clean" width="230" />
 </div>
 
 ---
