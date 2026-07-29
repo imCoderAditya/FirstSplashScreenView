@@ -158,6 +158,14 @@ class _FirstSplashScreenViewState extends State<FirstSplashScreenView> {
         ? widget.circleHeight
         : presetConfig.circleHeight;
 
+    final bool isLight = widget.preset == SplashPreset.light ||
+        widget.preset == SplashPreset.minimal ||
+        effectiveColors.first.computeLuminance() > 0.6;
+
+    final Color defaultTextColor = isLight ? const Color(0xFF1C1C1E) : Colors.white;
+    final Color defaultSubtextColor = isLight ? Colors.black54 : Colors.white.withValues(alpha: 0.7);
+    final Color defaultIndicatorColor = isLight ? const Color(0xFF6C5CE7) : Colors.white;
+
     final logoWidget = widget.child ?? widget.brandingKit?.logo;
 
     Widget content = Scaffold(
@@ -194,7 +202,7 @@ class _FirstSplashScreenViewState extends State<FirstSplashScreenView> {
                             decoration: BoxDecoration(
                               color: widget.iconBackgroundColor ??
                                   presetConfig.iconBackgroundColor ??
-                                  Colors.white24,
+                                  (isLight ? Colors.black.withValues(alpha: 0.08) : Colors.white24),
                               shape: BoxShape.circle,
                             ),
                             child: logoWidget,
@@ -208,7 +216,12 @@ class _FirstSplashScreenViewState extends State<FirstSplashScreenView> {
                         widget.brandingKit?.appName != null))
                   AnimatedTextWidget(
                     text: widget.titleText ?? widget.brandingKit?.appName ?? '',
-                    style: widget.textStyle,
+                    style: widget.textStyle ??
+                        TextStyle(
+                          color: defaultTextColor,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
                     animationType: effectiveTextAnim,
                   ),
                 if (widget.brandingKit?.tagline != null) ...[
@@ -216,7 +229,7 @@ class _FirstSplashScreenViewState extends State<FirstSplashScreenView> {
                   Text(
                     widget.brandingKit!.tagline!,
                     style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.7),
+                      color: defaultSubtextColor,
                       fontSize: 14,
                     ),
                   ),
@@ -224,7 +237,7 @@ class _FirstSplashScreenViewState extends State<FirstSplashScreenView> {
                 const SizedBox(height: 32),
                 SplashLoadingIndicator(
                   type: effectiveIndicatorType,
-                  color: Colors.white,
+                  color: defaultIndicatorColor,
                 ),
               ],
             ),
@@ -241,7 +254,7 @@ class _FirstSplashScreenViewState extends State<FirstSplashScreenView> {
                     Text(
                       'v${widget.brandingKit!.version}',
                       style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.5),
+                        color: defaultSubtextColor,
                         fontSize: 12,
                       ),
                     ),
@@ -249,7 +262,7 @@ class _FirstSplashScreenViewState extends State<FirstSplashScreenView> {
                     Text(
                       widget.brandingKit!.copyright!,
                       style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.5),
+                        color: defaultSubtextColor,
                         fontSize: 11,
                       ),
                     ),

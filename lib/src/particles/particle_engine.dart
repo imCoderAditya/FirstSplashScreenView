@@ -84,10 +84,11 @@ class _ParticleCanvasState extends State<ParticleCanvas>
     _particles.clear();
     final defaultColors = widget.colors ??
         const [
-          Colors.white,
-          Colors.amberAccent,
-          Colors.cyanAccent,
-          Colors.purpleAccent,
+          Color(0xFF6C5CE7),
+          Color(0xFF00CEC9),
+          Color(0xFFFF7675),
+          Color(0xFFFDCB6E),
+          Color(0xFF0984E3),
         ];
 
     for (int i = 0; i < widget.count; i++) {

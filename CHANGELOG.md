@@ -1,3 +1,8 @@
+## 1.0.2
+
+- ☀️ **Intelligent Light Theme Handling**: Added automatic high-contrast dark text (`#1C1C1E`), dark branding metadata, dark circle containers, and indigo loading indicators when `SplashPreset.light`, `SplashPreset.minimal`, or light backgrounds are used.
+- 🎨 **Multi-Theme Particle Palette**: Default particle engine colors now adapt and contrast beautifully on both light (`#FAFAFA`) and dark themes.
+
 ## 1.0.1
 
 - 🐛 **Particle Canvas Fix**: Resolved `SizedBox.expand` & `Positioned.fill` canvas bounds issue where GPU particles (Stars, Fireflies, Rain, Snow, Sparkles) collapsed to top-left corner on unconstrained stacks.

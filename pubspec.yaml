@@ -1,6 +1,6 @@
 name: firstsplashscreenview
 description: The flagship Flutter splash screen package with 100+ templates, Liquid Glass (iOS 26), GPU particle engine, animations, and 100% backward compatibility.
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/imCoderAditya/FirstSplashScreenView.git
 repository: https://github.com/imCoderAditya/FirstSplashScreenView.git
 issue_tracker: https://github.com/imCoderAditya/FirstSplashScreenView/issues

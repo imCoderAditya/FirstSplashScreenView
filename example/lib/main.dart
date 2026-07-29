@@ -166,12 +166,9 @@ class _ShowcaseHomeScreenState extends State<ShowcaseHomeScreen>
                 ),
                 _buildPresetTile(
                   context: context,
-                  preset: SplashPreset.ai,
-                  particleType: ParticleType.fireflies,
-                  particleColors: const [
-                    Colors.lightBlueAccent,
-                    Colors.cyanAccent,
-                  ],
+                  preset: SplashPreset.light,
+                  particleType: ParticleType.stars,
+
                   title: 'Rain & Monsoon Splash',
                   subtitle: 'Serene rainy atmosphere over dark night sky',
                   icon: Icons.umbrella_rounded,
