@@ -53,7 +53,8 @@ The **#1 modern, flagship Splash Screen package for Flutter**.
 - **⚡ One-Line Setup**: Instant splash screens using `SplashPreset.apple`, `SplashPreset.liquidGlass`, `SplashPreset.cyberpunk`, `SplashPreset.material3`, etc.
 - **💎 100+ Premium Templates**: Pre-configured domain templates for Tech, Finance, Crypto, AI, Healthcare, Gaming, Luxury, E-Commerce, Food, Travel, etc.
 - **🧊 Liquid Glass (iOS 26 Style)**: Frosted glassmorphism, dynamic ambient reflections, and glow borders.
-- **✨ Particle Engine**: GPU-accelerated particle canvas (Fireflies, Stars, Rain, Snow, Sparkles, Bubbles, Leaves).
+- **✨ GPU Particle Engine**: Full-viewport particle canvas (Fireflies, Stars, Rain, Snow, Sparkles, Bubbles, Leaves) with custom `particleColors`.
+- **☀️ Intelligent Light Theme**: Automatic high-contrast dark text (`#1C1C1E`), dark metadata, and indigo indicators for `SplashPreset.light` & `SplashPreset.minimal`.
 - **🔄 Advanced Animations**: Logo animations (Scale, Fade, Bounce, Flip, 3D Rotation, Pulse, Floating, Slide) & Text animations (Typewriter, Slide, Fade, Scale).
 - **⏳ Async Startup Checks**: Seamlessly execute Firebase, Hive, SharedPreferences, or API tasks during splash screen.
 - **🏷️ App Branding Kit**: Display App Name, Tagline, Logo, Version, Build Number, and Copyright metadata automatically.
@@ -71,7 +72,7 @@ Add `firstsplashscreenview` to your `pubspec.yaml`:
 dependencies:
   flutter:
     sdk: flutter
-  firstsplashscreenview: ^1.0.0
+  firstsplashscreenview: ^1.0.2
 ```
 
 ---
@@ -117,20 +118,34 @@ FirstSplashScreenView(
 );
 ```
 
-### 4. GPU Particle Engine (Stars, Fireflies, Rain, Snow)
+### 4. GPU Particle Engine (Rain, Fireflies, Stars, Snow)
 
 ```dart
 FirstSplashScreenView(
-  preset: SplashPreset.ai,
-  particleType: ParticleType.stars, // ParticleType.fireflies, ParticleType.rain, ParticleType.snow, ParticleType.sparkles
+  preset: SplashPreset.dark,
+  particleType: ParticleType.rain,
+  particleColors: const [Colors.lightBlueAccent, Colors.cyanAccent], // Custom particle colors
   duration: const Duration(seconds: 3),
   nextPage: const HomePage(),
-  titleText: 'AI Engine',
-  child: const Icon(Icons.auto_awesome, size: 50, color: Colors.tealAccent),
+  titleText: 'Rain & Monsoon Splash',
+  child: const Icon(Icons.umbrella_rounded, size: 50, color: Colors.lightBlueAccent),
 );
 ```
 
-### 5. Async Startup Initialization & Branding Kit
+### 5. Intelligent Light Theme Usage
+
+```dart
+FirstSplashScreenView(
+  preset: SplashPreset.light, // Automatic dark text & indigo indicator contrast
+  particleType: ParticleType.stars,
+  duration: const Duration(seconds: 3),
+  nextPage: const HomePage(),
+  titleText: 'Light Theme Splash',
+  child: const Icon(Icons.wb_sunny_rounded, size: 50, color: Color(0xFF6C5CE7)),
+);
+```
+
+### 6. Async Startup Initialization & Branding Kit
 
 ```dart
 FirstSplashScreenView(
@@ -140,7 +155,7 @@ FirstSplashScreenView(
   brandingKit: const BrandingKit(
     appName: 'Acme Enterprise',
     tagline: 'Empowering Modern Workflows',
-    version: '1.0.0',
+    version: '1.0.2',
     copyright: '© 2026 Acme Corp',
   ),
   startupChecks: StartupChecks(
@@ -154,7 +169,7 @@ FirstSplashScreenView(
 );
 ```
 
-### 6. Legacy Backward-Compatible Usage
+### 7. Legacy Backward-Compatible Usage
 
 Existing code using `SplashScreen` or `SplashScreen.gradient` works out of the box:
 
@@ -217,6 +232,7 @@ SplashScreen(
 | `brandingKit` | `BrandingKit?` | `null` | App metadata (AppName, Tagline, Version, Copyright) |
 | `startupChecks` | `StartupChecks?` | `null` | Async initialization tasks configuration |
 | `particleType` | `ParticleType?` | `null` | GPU particle effect |
+| `particleColors` | `List<Color>?` | `null` | Custom particle color palette |
 | `indicatorType` | `LoadingIndicatorType?` | `LoadingIndicatorType.circular` | Loading indicator style |
 | `logoAnimationType` | `LogoAnimationType?` | `LogoAnimationType.scale` | Logo animation effect |
 | `textAnimationType` | `TextAnimationType?` | `TextAnimationType.fade` | Text animation effect |
