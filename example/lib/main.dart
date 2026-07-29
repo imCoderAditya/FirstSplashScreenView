@@ -102,10 +102,7 @@ class _ShowcaseHomeScreenState extends State<ShowcaseHomeScreen>
       body: SafeArea(
         child: TabBarView(
           controller: _tabController,
-          children: [
-            _buildPresetsTab(context),
-            _buildTemplatesTab(context),
-          ],
+          children: [_buildPresetsTab(context), _buildTemplatesTab(context)],
         ),
       ),
     );
@@ -124,9 +121,7 @@ class _ShowcaseHomeScreenState extends State<ShowcaseHomeScreen>
                 colors: [Color(0xFF1F1D2B), Color(0xFF2A2D3E)],
               ),
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(
-                color: Colors.white.withValues(alpha: 0.12),
-              ),
+              border: Border.all(color: Colors.white.withValues(alpha: 0.12)),
             ),
             child: Column(
               children: [
@@ -163,10 +158,24 @@ class _ShowcaseHomeScreenState extends State<ShowcaseHomeScreen>
                 _buildPresetTile(
                   context: context,
                   preset: SplashPreset.apple,
+
                   title: 'Apple Style Splash',
                   subtitle: 'Minimal, elegant dark theme with scaling logo',
                   icon: Icons.apple,
                   accentColor: Colors.white,
+                ),
+                _buildPresetTile(
+                  context: context,
+                  preset: SplashPreset.ai,
+                  particleType: ParticleType.fireflies,
+                  particleColors: const [
+                    Colors.lightBlueAccent,
+                    Colors.cyanAccent,
+                  ],
+                  title: 'Rain & Monsoon Splash',
+                  subtitle: 'Serene rainy atmosphere over dark night sky',
+                  icon: Icons.umbrella_rounded,
+                  accentColor: Colors.lightBlueAccent,
                 ),
                 _buildPresetTile(
                   context: context,
@@ -195,6 +204,7 @@ class _ShowcaseHomeScreenState extends State<ShowcaseHomeScreen>
                 _buildPresetTile(
                   context: context,
                   preset: SplashPreset.ai,
+                  particleType: ParticleType.stars,
                   title: 'AI & Space Engine',
                   subtitle: 'Cosmic starfield with atom orbit indicator',
                   icon: Icons.auto_awesome,
@@ -316,6 +326,8 @@ class _ShowcaseHomeScreenState extends State<ShowcaseHomeScreen>
     required String subtitle,
     required IconData icon,
     required Color accentColor,
+    ParticleType? particleType,
+    List<Color>? particleColors,
   }) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -363,6 +375,8 @@ class _ShowcaseHomeScreenState extends State<ShowcaseHomeScreen>
               MaterialPageRoute(
                 builder: (context) => FirstSplashScreenView(
                   preset: preset,
+                  particleType: particleType,
+                  particleColors: particleColors,
                   duration: const Duration(seconds: 3),
                   nextPage: const ShowcaseHomeScreen(),
                   titleText: title,

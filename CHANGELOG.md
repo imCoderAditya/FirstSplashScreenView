@@ -1,3 +1,9 @@
+## 1.0.1
+
+- 🐛 **Particle Canvas Fix**: Resolved `SizedBox.expand` & `Positioned.fill` canvas bounds issue where GPU particles (Stars, Fireflies, Rain, Snow, Sparkles) collapsed to top-left corner on unconstrained stacks.
+- 🎨 **Enhanced Particle Painters**: Upgraded Rain strokes with downward angle velocity, Fireflies glowing aura effects, and twinkling Star animations.
+- 🌈 **Custom Particle Colors**: Added `particleColors` parameter to `FirstSplashScreenView`.
+
 ## 1.0.0
 
 - 🚀 **Flagship Major Release**: Transformed into the #1 modern Splash Screen package for Flutter.

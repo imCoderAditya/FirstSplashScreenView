@@ -45,7 +45,7 @@ class ParticleCanvas extends StatefulWidget {
   const ParticleCanvas({
     super.key,
     this.type = ParticleType.stars,
-    this.count = 40,
+    this.count = 50,
     this.colors,
     this.child,
   });
@@ -72,6 +72,14 @@ class _ParticleCanvasState extends State<ParticleCanvas>
     _initParticles();
   }
 
+  @override
+  void didUpdateWidget(covariant ParticleCanvas oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.type != widget.type || oldWidget.colors != widget.colors) {
+      _initParticles();
+    }
+  }
+
   void _initParticles() {
     _particles.clear();
     final defaultColors = widget.colors ??
@@ -83,15 +91,31 @@ class _ParticleCanvasState extends State<ParticleCanvas>
         ];
 
     for (int i = 0; i < widget.count; i++) {
+      double speedY = 0.001 + _random.nextDouble() * 0.003;
+      double speedX = (_random.nextDouble() - 0.5) * 0.001;
+      double size = _random.nextDouble() * 4 + 2;
+
+      if (widget.type == ParticleType.rain) {
+        speedY = 0.015 + _random.nextDouble() * 0.02; // Faster downward rain
+        speedX = -0.002; // Slight wind angle
+        size = _random.nextDouble() * 3 + 2;
+      } else if (widget.type == ParticleType.snow) {
+        speedY = 0.002 + _random.nextDouble() * 0.003;
+        speedX = (_random.nextDouble() - 0.5) * 0.002;
+        size = _random.nextDouble() * 5 + 3;
+      } else if (widget.type == ParticleType.fireflies) {
+        speedY = 0.001 + _random.nextDouble() * 0.002;
+        size = _random.nextDouble() * 6 + 3;
+      }
+
       _particles.add(
         Particle(
           x: _random.nextDouble(),
           y: _random.nextDouble(),
-          size: _random.nextDouble() * 4 + 2,
-          speedY: (_random.nextDouble() * 0.002 + 0.0005) *
-              (widget.type == ParticleType.rain ? 5 : 1),
-          speedX: (_random.nextDouble() - 0.5) * 0.001,
-          opacity: _random.nextDouble() * 0.7 + 0.3,
+          size: size,
+          speedY: speedY,
+          speedX: speedX,
+          opacity: _random.nextDouble() * 0.6 + 0.4,
           color: defaultColors[_random.nextInt(defaultColors.length)],
           rotation: _random.nextDouble() * 2 * pi,
         ),
@@ -107,14 +131,13 @@ class _ParticleCanvasState extends State<ParticleCanvas>
             widget.type == ParticleType.snow) {
           particle.y += particle.speedY;
           particle.x += particle.speedX;
-          if (particle.y > 1.0) {
+          if (particle.y > 1.05) {
             particle.y = -0.05;
             particle.x = _random.nextDouble();
           }
-        } else if (widget.type == ParticleType.bubbles ||
-            widget.type == ParticleType.fireflies) {
+        } else if (widget.type == ParticleType.fireflies) {
           particle.y -= particle.speedY;
-          particle.x += sin(_controller.value * 2 * pi + particle.y * 10) * 0.001;
+          particle.x += sin(_controller.value * 2 * pi + particle.y * 10) * 0.002;
           if (particle.y < -0.05) {
             particle.y = 1.05;
             particle.x = _random.nextDouble();
@@ -124,8 +147,6 @@ class _ParticleCanvasState extends State<ParticleCanvas>
           particle.x += particle.speedX;
           if (particle.y < -0.05) {
             particle.y = 1.05;
-          }
-          if (particle.x < 0 || particle.x > 1) {
             particle.x = _random.nextDouble();
           }
         }
@@ -141,10 +162,12 @@ class _ParticleCanvasState extends State<ParticleCanvas>
 
   @override
   Widget build(BuildContext context) {
-    return RepaintBoundary(
-      child: CustomPaint(
-        painter: _ParticlePainter(_particles, widget.type),
-        child: widget.child,
+    return SizedBox.expand(
+      child: RepaintBoundary(
+        child: CustomPaint(
+          painter: _ParticlePainter(_particles, widget.type, _controller.value),
+          child: widget.child,
+        ),
       ),
     );
   }
@@ -153,35 +176,59 @@ class _ParticleCanvasState extends State<ParticleCanvas>
 class _ParticlePainter extends CustomPainter {
   final List<Particle> particles;
   final ParticleType type;
+  final double animValue;
 
-  _ParticlePainter(this.particles, this.type);
+  _ParticlePainter(this.particles, this.type, this.animValue);
 
   @override
   void paint(Canvas canvas, Size size) {
+    if (size.width == 0 || size.height == 0) return;
+
     final paint = Paint()..style = PaintingStyle.fill;
 
     for (var particle in particles) {
-      paint.color = particle.color.withValues(alpha: particle.opacity);
       final dx = particle.x * size.width;
       final dy = particle.y * size.height;
 
-      if (type == ParticleType.stars || type == ParticleType.sparkles) {
-        canvas.drawCircle(Offset(dx, dy), particle.size, paint);
-      } else if (type == ParticleType.rain) {
+      if (type == ParticleType.rain) {
+        paint
+          ..color = particle.color.withValues(alpha: particle.opacity)
+          ..strokeWidth = particle.size * 0.6
+          ..style = PaintingStyle.stroke
+          ..strokeCap = StrokeCap.round;
+
         canvas.drawLine(
           Offset(dx, dy),
-          Offset(dx + particle.speedX * 10, dy + particle.size * 3),
-          paint..strokeWidth = 1.5,
+          Offset(dx - 3, dy + particle.size * 8),
+          paint,
         );
-      } else if (type == ParticleType.bubbles) {
-        canvas.drawCircle(
-          Offset(dx, dy),
-          particle.size * 1.5,
-          paint
-            ..style = PaintingStyle.stroke
-            ..strokeWidth = 1.0,
-        );
+      } else if (type == ParticleType.fireflies) {
+        final glowOpacity = (sin(animValue * 2 * pi + particle.x * 20) * 0.3 + 0.7) * particle.opacity;
+        
+        // Glow aura
+        paint
+          ..style = PaintingStyle.fill
+          ..color = particle.color.withValues(alpha: glowOpacity * 0.3);
+        canvas.drawCircle(Offset(dx, dy), particle.size * 2.5, paint);
+
+        // Core dot
+        paint.color = particle.color.withValues(alpha: glowOpacity);
+        canvas.drawCircle(Offset(dx, dy), particle.size, paint);
+      } else if (type == ParticleType.stars || type == ParticleType.sparkles) {
+        final twinkle = (sin(animValue * 4 * pi + particle.y * 30) * 0.4 + 0.6) * particle.opacity;
+        paint
+          ..style = PaintingStyle.fill
+          ..color = particle.color.withValues(alpha: twinkle);
+        canvas.drawCircle(Offset(dx, dy), particle.size, paint);
+      } else if (type == ParticleType.snow) {
+        paint
+          ..style = PaintingStyle.fill
+          ..color = particle.color.withValues(alpha: particle.opacity * 0.8);
+        canvas.drawCircle(Offset(dx, dy), particle.size, paint);
       } else {
+        paint
+          ..style = PaintingStyle.fill
+          ..color = particle.color.withValues(alpha: particle.opacity);
         canvas.drawCircle(Offset(dx, dy), particle.size, paint);
       }
     }

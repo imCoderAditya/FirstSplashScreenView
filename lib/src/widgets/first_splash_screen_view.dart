@@ -31,6 +31,7 @@ class FirstSplashScreenView extends StatefulWidget {
   final BrandingKit? brandingKit;
   final StartupChecks? startupChecks;
   final ParticleType? particleType;
+  final List<Color>? particleColors;
   final LoadingIndicatorType? indicatorType;
   final LogoAnimationType? logoAnimationType;
   final TextAnimationType? textAnimationType;
@@ -59,6 +60,7 @@ class FirstSplashScreenView extends StatefulWidget {
     this.brandingKit,
     this.startupChecks,
     this.particleType,
+    this.particleColors,
     this.indicatorType,
     this.logoAnimationType,
     this.textAnimationType,
@@ -132,21 +134,26 @@ class _FirstSplashScreenViewState extends State<FirstSplashScreenView> {
         ? TemplateDefinitions.getTemplateConfig(widget.template!)
         : PresetDefinitions.getConfig(widget.preset ?? SplashPreset.modern);
 
-    final effectiveBackgroundStyle = (widget.gradient != null || widget.colors != null)
-        ? BackgroundStyle.gradient
-        : (widget.backgroundColor != null
-            ? BackgroundStyle.solid
-            : presetConfig.backgroundStyle);
+    final effectiveBackgroundStyle =
+        (widget.gradient != null || widget.colors != null)
+            ? BackgroundStyle.gradient
+            : (widget.backgroundColor != null
+                ? BackgroundStyle.solid
+                : presetConfig.backgroundStyle);
 
     final effectiveColors = widget.colors ??
         (widget.gradient != null && widget.gradient is LinearGradient
             ? (widget.gradient as LinearGradient).colors
             : presetConfig.colors);
 
-    final effectiveParticleType = widget.particleType ?? presetConfig.particleType;
-    final effectiveIndicatorType = widget.indicatorType ?? presetConfig.indicatorType;
-    final effectiveLogoAnim = widget.logoAnimationType ?? presetConfig.logoAnimation;
-    final effectiveTextAnim = widget.textAnimationType ?? presetConfig.textAnimation;
+    final effectiveParticleType =
+        widget.particleType ?? presetConfig.particleType;
+    final effectiveIndicatorType =
+        widget.indicatorType ?? presetConfig.indicatorType;
+    final effectiveLogoAnim =
+        widget.logoAnimationType ?? presetConfig.logoAnimation;
+    final effectiveTextAnim =
+        widget.textAnimationType ?? presetConfig.textAnimation;
     final effectiveCircleHeight = widget.circleHeight > 0
         ? widget.circleHeight
         : presetConfig.circleHeight;
@@ -164,7 +171,12 @@ class _FirstSplashScreenViewState extends State<FirstSplashScreenView> {
             child: const SizedBox.expand(),
           ),
           if (effectiveParticleType != null)
-            ParticleCanvas(type: effectiveParticleType),
+            Positioned.fill(
+              child: ParticleCanvas(
+                type: effectiveParticleType,
+                colors: widget.particleColors,
+              ),
+            ),
           if (widget.videoBuilder != null) widget.videoBuilder!(context),
           if (widget.lottieBuilder != null) widget.lottieBuilder!(context),
           if (widget.riveBuilder != null) widget.riveBuilder!(context),
@@ -192,7 +204,8 @@ class _FirstSplashScreenViewState extends State<FirstSplashScreenView> {
                 const SizedBox(height: 24),
                 if (widget.text != null) widget.text!,
                 if (widget.text == null &&
-                    (widget.titleText != null || widget.brandingKit?.appName != null))
+                    (widget.titleText != null ||
+                        widget.brandingKit?.appName != null))
                   AnimatedTextWidget(
                     text: widget.titleText ?? widget.brandingKit?.appName ?? '',
                     style: widget.textStyle,
